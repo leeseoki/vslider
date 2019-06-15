@@ -23,14 +23,22 @@
     .slider {
         position: relative;
         margin: 0 0 @indent__base;
+        height: @slider__item-height--base;
+        overflow: hidden;
+
+        // Slider container
+        &__container {
+            height: 100%;
+        }
+
 
         // Slider item
         &-item {
-            background-position: 0 0;
+            background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             display: none;
-            height: @slider__item-height--base;
+            height: 100%;
             position: relative;
 
             &__infor {
@@ -141,10 +149,7 @@
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .slider {
-
-        &-item {
-            height: @slider__item-height--xs;
-        }
+        height: @slider__item-height--xs;
     }
 }
 
