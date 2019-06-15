@@ -1,0 +1,33 @@
+<div class="slider" id="vslider">
+    <div class="slider__container" data-bind="foreach: items">
+
+        <!-- ko if: thumb -->
+        <div data-bind="attr: {class: 'slider-item ' + classes}, style: { backgroundImage: 'url(' +thumb+ ')' }">
+
+            <div class="slider-item__infor">
+                <!-- ko if: title -->
+                <h2 data-bind="text: title"></h2>
+                <!-- /ko -->
+
+                <!-- ko if: desc -->
+                <p class="slider-item__description" data-bind="text: desc"></p>
+                <!-- /ko -->
+
+                <!-- ko if: btns.title -->
+                <a data-bind="attr: {href: btns.link, class: btns.classes}, html: btns.title"></a>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- /ko -->
+
+    </div>
+
+    <div class="slider__controls">
+        <a class="prev" href="javascript:void(0);"></a>
+        <a class="next" href="javascript:void(0);"></a>
+    </div>
+
+    <div class="slider__pagers" data-bind="foreach: items">
+        <span class="dot" data-bind="attr: {'data-index': $index}"></span>
+    </div>
+</div>

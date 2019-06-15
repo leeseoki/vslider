@@ -1,0 +1,167 @@
+//
+//  vSlider Variables
+//  ---------------------------------------------
+@slider__color:                 @color-white;
+@slider__color-link:            @color-white;
+@slider__color-link-focused:    @color-blue1;
+@slider__content-margin-md:     0 50px;
+@slider__content-margin-xs:     0 50px;
+
+// Slider Item
+@slider__item-height--base:     50vh;
+@slider__item-height--xs:       500px;
+
+//  Window overlay
+@overlay__slider-background:    @color-gray55;
+@overlay__slider-opacity:       .7;
+
+
+//
+//  Common
+//  _____________________________________________
+& when (@media-common = true) {
+    .slider {
+        position: relative;
+        margin: 0 0 @indent__base;
+
+        // Slider item
+        &-item {
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: none;
+            height: @slider__item-height--base;
+            position: relative;
+
+            &__infor {
+                color: @slider__color;
+                padding: @slider__content-margin-md;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translate(0, -50%);
+                z-index: @z-index-10;
+            }
+
+            &:first-child {
+                display: block;
+            }
+
+            &::after {
+                content: '';
+                background: @overlay__slider-background;
+                opacity: @overlay__slider-opacity;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: @z-index-1;
+            }
+        }
+
+        // Slider pagers
+        &__pagers {
+            margin: @indent__base;
+            position: absolute;
+            bottom: @indent__base;
+            left: 0;
+            text-align: center;
+            width: 100%;
+            z-index: @z-index-1;
+
+            .dot {
+                background-color: @color-white;
+                border-radius: 100%;
+                cursor: pointer;
+                margin: 0 @indent__xs 0 0;
+                display: inline-block;
+                height: 7px;
+                width: 7px;
+
+                &:focus,
+                &:hover,
+                &.active {
+                    background-color: @slider__color-link-focused;
+                }
+
+            }
+
+        }
+
+        // Current slider pager
+        &__current-pager {
+            text-align: center;
+        }
+
+        // Slider Controls
+        &__controls {
+            a {
+                color: @slider__color;
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                text-decoration: none;
+                z-index: @z-index-10;
+
+                .lib-icon-font(
+                        @icon-next,
+                    @_icon-font-size: 24px,
+                    @_icon-font-text-hide: true,
+                    @_icon-font-position: after,
+                    @_icon-font-display: block
+                );
+
+
+                &:focus,
+                &:hover {
+                    color: @slider__color-link-focused;
+                }
+            }
+
+            .prev {
+                left: @indent__xs;
+                .lib-icon-font-symbol(
+                    @_icon-font-content: @icon-prev,
+                    @_icon-font-position: after
+                );
+            }
+
+            .next {
+                right: @indent__xs;
+            }
+        }
+    }
+}
+
+
+//
+//  Mobile @screen__m
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .slider {
+
+        &-item {
+            height: @slider__item-height--xs;
+        }
+    }
+}
+
+
+//
+//  Mobile @screen__s
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+
+}
+
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
